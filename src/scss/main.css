@@ -648,7 +648,7 @@ a {
 
 @media (max-width: 550px) {
   .homeBannerFeaturedImages {
-    width: 125px;
+    width: 100px;
     height: 125px;
   }
 }
@@ -772,6 +772,7 @@ h2 {
   .airingTodaycontainer {
     -webkit-column-gap: 10px;
             column-gap: 10px;
+    row-gap: 0;
   }
 }
 
@@ -788,6 +789,12 @@ h2 {
   height: 90%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media (max-width: 550px) {
+  .airingTodaycontainer .airingTodayPoster img {
+    height: 150px;
+  }
 }
 
 .airingTodaycontainer .airingTodayPoster p {
