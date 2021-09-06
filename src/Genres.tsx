@@ -17,7 +17,7 @@ export const Genres: FC = () => {
   const {id} = useParams<any>()
   const {name} = useParams<any>()
   const [page, setPage] = useState<any>(1)
-  const [urlResults, setUrlResults] = useState<any>("")
+  const [urlResults, setUrlResults] = useState<any>(`https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`)
   const [genres, setGenres] = useState<any>({})
   const [results, setResults] = useState<any>({})
   const [loading, setLoading] = useState<boolean>(true)
