@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FC, useEffect, useState } from "react";
+import { FC, Key, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { KnownForShow } from "./KnownForShow";
 import { Loading } from "./Loading";
@@ -56,8 +56,8 @@ export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
                 <div className="peopleResultKnownFor">
                     <h2>Known for:</h2>
                     <div className="knownForContainer">
-                        {credits.slice(0, 2).map((featured: { id: number; name: string; backdrop_path: string | null;}) => (
-                            <KnownForShow key={featured.id} id={featured.id} name={featured.name} backdrop_path={featured.backdrop_path}/>
+                        {credits.slice(0, 2).map((featured: { id: number; name: string; backdrop_path: string | null;}, index: Key | null | undefined) => (
+                            <KnownForShow key={index} id={featured.id} name={featured.name} backdrop_path={featured.backdrop_path}/>
                         ))}
                     </div>
                 </div>

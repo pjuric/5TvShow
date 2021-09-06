@@ -16,12 +16,11 @@ export const Genres: FC = () => {
   const urlGenres = `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`
   const {id} = useParams<any>()
   const {name} = useParams<any>()
+  const [page, setPage] = useState<any>(1)
+  const [urlResults, setUrlResults] = useState<any>("")
   const [genres, setGenres] = useState<any>({})
   const [results, setResults] = useState<any>({})
-  const [urlResults, setUrlResults] = useState<any>("")
   const [loading, setLoading] = useState<boolean>(true)
-
-  const [page, setPage] = useState<any>(1)
   
   useEffect(() => {
     if(id==="0" && name==="Trending"){
