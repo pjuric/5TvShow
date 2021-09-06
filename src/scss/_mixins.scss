@@ -1,0 +1,88 @@
+@mixin flex($justify, $direction){
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin responsive($width){
+    @media (max-width: $width){
+        @content;
+    }
+}
+
+@mixin mainHeading($align, $transform){
+    font-weight: 500;
+    font-size: 65px;
+    line-height: 84px;
+    letter-spacing: -1.68px;
+    text-transform: $transform;
+    text-align: $align;
+    overflow-y: hidden;
+    margin-bottom: 30px;
+
+    @include responsive(850px){
+        font-size: 45px;
+        line-height: 50px;
+        margin-bottom: 10px;
+    }
+
+    @include responsive(500px){
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+}
+
+@mixin secondaryHeading($align, $transform){
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.84px;
+    text-align: $align;
+    text-transform: $transform;
+    margin-bottom: 15px;
+    margin-top: 100px;
+
+    @include responsive(500px){
+        font-size: 20px;
+        margin-top: 50px;
+    }
+}
+
+@mixin thirdHeading($align, $transform){
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.84px;
+    text-align: $align;
+    text-transform: $transform;
+    margin-bottom: 15px;
+
+    @include responsive(500px){
+        font-size: 16px;
+    }
+}
+
+@mixin overviewParagraph{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    mix-blend-mode: normal;
+    opacity: 0.7;
+    overflow-y: hidden;
+    margin-bottom: 30px;
+}
+
+@mixin italicFont{
+    font-style: italic;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 1.32px;
+    margin-top: 1px;
+    margin-bottom: 20px;
+
+    @include responsive(500px){
+        font-size: 13px;
+    }
+}
