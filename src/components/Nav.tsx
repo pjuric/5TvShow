@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 export const Nav: FC = () => {
   return (
-    <div className="">
+    <div id="nav" className="">
         <div className="navContainer">
             <div className="logo">
                 <img src="/logo.svg" alt="FiveTv"/>

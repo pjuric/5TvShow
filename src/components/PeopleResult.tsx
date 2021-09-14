@@ -2,7 +2,6 @@ import axios from "axios";
 import { FC, Key, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { KnownForShow } from "./KnownForShow";
-import { Loading } from "./Loading";
 
 interface Props{ 
     id: number; 
@@ -34,7 +33,7 @@ export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
   return (
       <div>
       {loading ?
-        <Loading/>
+        <div></div>
       :
         <div className="peopleResult">
             <img 
@@ -54,7 +53,7 @@ export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
             </div>
             {credits.length > 0 ?
                 <div className="peopleResultKnownFor">
-                    <h2>Known for:</h2>
+                    <h2>Starred in:</h2>
                     <div className="knownForContainer">
                         {credits.slice(0, 2).map((featured: { id: number; name: string; backdrop_path: string | null;}, index: Key | null | undefined) => (
                             <KnownForShow key={index} id={featured.id} name={featured.name} backdrop_path={featured.backdrop_path}/>

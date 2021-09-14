@@ -44,7 +44,7 @@ export const HomeBanner: FC<PopularMovie[] | any> = ({popular}) => {
         <p className="overviewParagraph">
           {popular[0].overview ? popular[0].overview : "No description avaliable"}  
         </p>
-        <WhiteButton link={`show/${popular[0].id}`} buttonName="Details"/>
+        <WhiteButton link={`show/${popular[0].id}`} buttonName="Details" external={false}/>
       </div>
       <p className="secondaryHeading">Also Featured:</p>
       <div className="homeBannerFeatured">

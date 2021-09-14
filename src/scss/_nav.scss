@@ -115,6 +115,8 @@
 
 .responsiveNavLinks{
     display: none;
+    position: relative;
+    z-index: 50;
 
     @include responsive(850px){
         @include flex(space-between, row);

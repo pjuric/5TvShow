@@ -7,8 +7,34 @@
     font-size: 15px;
     line-height: 15px;
     text-align: center;
+    margin-right: 20px;
 
     @include responsive(500px){
         padding: 10px 20px
+    }
+}
+
+.secondaryButton{
+    color: rgba(255, 255, 255, 0.589);
+    background: $grey;
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 15px;
+    text-align: center;
+    height: 100%;
+    transition: all 250ms ease-in-out;
+
+    @include responsive(500px){
+        padding: 10px 20px
+    }
+
+    &:hover{
+        background: #575757;
+
+        @include responsive(600px){
+            background: $grey;
+        }
     }
 }
