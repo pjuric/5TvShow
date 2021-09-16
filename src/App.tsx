@@ -29,10 +29,10 @@ const App: FC = () => {
                 <Route exact path="/show/:id">
                   <Show/>
                 </Route>
-                <Route exact path="/season/:id">
+                <Route exact path="/season/:id/:number">
                   <Season/>
                 </Route>
-                <Route exact path="/episode/:id">
+                <Route exact path="/episode/:id/:snumber/:enumber">
                   <Episode/>
                 </Route>
                 <Route exact path="/person/:id">

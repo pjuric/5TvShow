@@ -31,7 +31,7 @@ export const ShowOverall: FC<Props> = ({backdrop_path, first_air_date, last_air_
   
   return (
     <div className="showOverall">
-      <img src={backdrop_path ? `${baseUrl}${backdrop_path}` : "/showBackground.png"} alt=""/>
+      <img src={backdrop_path ? `${baseUrl}${backdrop_path}` : "/backdrop.jpg"} alt=""/>
       <div className="showOverallGradient"></div>
       <div className="showOverallShowDetails">
         <h2>Overall Show Details and Statistics</h2>

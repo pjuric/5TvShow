@@ -71,7 +71,7 @@
 
         @include responsive(850px){
             grid-auto-flow: unset;
-            grid-column-gap: 20px;
+            grid-column-gap: 10px;
             row-gap: 20px;
             grid-template-columns: 1fr 1fr;
         }
@@ -110,12 +110,12 @@
     }
 
     @include responsive(650px){
-        width: 200px;
+        width: auto;
         height: 150px;
     }
 
     @include responsive(550px){
-        width: 100px;
+        width: auto;
         height: 125px;
     }
 
@@ -142,6 +142,7 @@
         min-height: 100%;
         object-fit: cover;
         transition: all 250ms ease-in-out;
+        
 
         &:hover{
             opacity: 0.3;
@@ -164,7 +165,7 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 22px;
-        // display: none;
+        display: none;
     }
 }
 

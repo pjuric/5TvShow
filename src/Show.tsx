@@ -59,10 +59,9 @@ export const Show: FC = () => {
         <Loading/>
       :
       <div>
-        {console.log(images.backdrops)}
         <div id="showTop"></div>
         <ShowBanner id={details.id} backdrop_path={details.backdrop_path} poster_path={details.poster_path} name={details.name} tagline={details.tagline} genres={details.genres} overview={details.overview} homepage={details.homepage} network={details.networks[0]} images={images.backdrops}/>
-        <ShowSeasonsAndLastEpisode seasons={details.seasons} last_episode_to_air={details.last_episode_to_air}/>
+        <ShowSeasonsAndLastEpisode seasons={details.seasons} last_episode_to_air={details.last_episode_to_air} tvid={id}/>
         <div id="showOverall"><ShowOverall backdrop_path={details.backdrop_path} first_air_date={details.first_air_date} last_air_date={details.last_air_date} vote_average={details.vote_average} vote_count={details.vote_count} original_language={details.original_language} number_of_seasons={details.number_of_seasons} number_of_episodes={details.number_of_episodes} popularity={details.popularity} type={details.type} spoken_languages={details.spoken_languages} production_countries={details.production_countries} status={details.status} keywords={keywords} externalIds={externalIds}/></div>
         <ShowCastAndSimilar created_by={details.created_by} credits={credits} similar={similar.slice(0, 4)}/>
         <ShowGallery videos={videos} images={images.backdrops}/>

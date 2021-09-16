@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { ShowSeason } from "./ShowSeason";
 
-export const ShowSeasonsAndLastEpisode: FC<any> = ({seasons, last_episode_to_air}) => {
+export const ShowSeasonsAndLastEpisode: FC<any> = ({seasons, last_episode_to_air, tvid}) => {
 
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 
@@ -11,9 +11,9 @@ export const ShowSeasonsAndLastEpisode: FC<any> = ({seasons, last_episode_to_air
       <div className="showSeasons">
         <h2>Seasons</h2>
         <div className="showSeasonsContainer">
-          {seasons.map((featured: { id: number; name: string; poster_path: string;}) => (
+          {seasons.map((featured: { id: number; name: string; poster_path: string; tvid: number; season_number: number;}) => (
             // featured.poster_path &&
-            <ShowSeason key={featured.id} id={featured.id} name={featured.name} poster_path={featured.poster_path}/>
+            <ShowSeason key={featured.id} id={featured.id} name={featured.name} poster_path={featured.poster_path} tvid={tvid} season_number={featured.season_number}/>
           ))}
         </div>
       </div>
