@@ -29,7 +29,6 @@ export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
         fetchData();
     }, [urlCredits])
 
-
   return (
       <div>
       {loading ?

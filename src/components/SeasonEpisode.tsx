@@ -19,7 +19,7 @@ export const SeasonEpisode: FC<Props> = ({ id, tvid, name, still_path, season_nu
       <Link to={`/episode/${tvid}/${season_number}/${episode_number}`}>
         <img src={still_path ? `${baseUrl}${still_path}` : "/backdrop.jpg"} alt={name}/>
       </Link>
-        <p><span>Episode {episode_number}: </span>{name}</p>
+        {name.includes("Episode" || "episode") ? <p>{name}</p> : <p><span>Episode {episode_number}: </span>{name}</p>}
     </div>
   );
 }

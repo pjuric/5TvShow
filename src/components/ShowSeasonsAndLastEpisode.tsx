@@ -20,7 +20,7 @@ export const ShowSeasonsAndLastEpisode: FC<any> = ({seasons, last_episode_to_air
       {last_episode_to_air &&
         <div className="showLastEpisode">
           <h2>Last Aired Episode</h2>
-          <Link to={`/episode/${last_episode_to_air.id}`}>
+          <Link to={`/episode/${tvid}/${last_episode_to_air.season_number}/${last_episode_to_air.episode_number}`}>
               <img src={last_episode_to_air.still_path ? `${baseUrl}${last_episode_to_air.still_path}` : "/backdrop.jpg"} alt={last_episode_to_air.name}/>
           </Link>
           <h2 className="showLastEpisodeName">{last_episode_to_air.name} <span>({last_episode_to_air.air_date.slice(0, 4)}.)</span></h2>

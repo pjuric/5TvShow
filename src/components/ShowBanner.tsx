@@ -32,8 +32,6 @@ export const ShowBanner:FC<Props> = ({id, backdrop_path, poster_path, name, tagl
     if(network){
         networkHomepageUrl = `https://api.themoviedb.org/3/network/${network.id}?api_key=${API_KEY}`
     }
-    
-    
 
     useEffect((): void => {
         async function fetchData() {

@@ -21,7 +21,7 @@ export const SeasonBanner: FC<Props> = ({ poster_path, name, season_number, over
             <img className="seasonBannerPoster" src={poster_path ? `${baseUrl}${poster_path}` : "/examplePoster.png"} alt={name}/>
             <div className="seasonDetailsSection">
                 <h1>{name}</h1>
-                {/* <h2>Season number: {season_number}</h2> */}
+                {name.includes("Season") || name.includes("Specials") ? <div></div> : <h2>Season {season_number}</h2>}
                 <p className="seasonOverview">{overview ? overview : "No overview avaliable."}</p>
             </div>
         </div>
