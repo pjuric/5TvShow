@@ -10,7 +10,7 @@ import { GenresList } from './components/GenresList';
 import { Loading } from './components/Loading';
 import { NotFound } from './components/NotFound';
 
-export const Genres: FC = () => {
+const Genres: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const urlGenres = `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`
@@ -80,3 +80,5 @@ export const Genres: FC = () => {
     </div>
   );
 }
+
+export default Genres;

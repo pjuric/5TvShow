@@ -3,7 +3,7 @@ import { FC, SetStateAction, useEffect, useState } from "react";
 import { Loading } from "./components/Loading";
 import { PeopleResult } from "./components/PeopleResult";
 
-export const People: FC = () => {
+const People: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const [popular, setPopular] = useState<any>({})
@@ -68,3 +68,5 @@ const updateQuery = (e: { preventDefault: () => void; }) => {
     </div>
   );
 }
+
+export default People;

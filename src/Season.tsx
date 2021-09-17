@@ -7,7 +7,7 @@ import { SeasonBanner } from "./components/SeasonBanner";
 import { SeasonCast } from "./components/SeasonCast";
 import { SeasonEpisodes } from "./components/SeasonEpisodes";
 
-export const Season: FC = () => {
+const Season: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const {id} = useParams<any>()
@@ -55,3 +55,5 @@ export const Season: FC = () => {
     </div>
   );
 }
+
+export default Season;

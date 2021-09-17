@@ -1,9 +1,11 @@
 import * as React from 'react';
 
-export const Person = () => {
+const Person = () => {
   return (
     <div>
       Person
     </div>
   );
 }
+
+export default Person;

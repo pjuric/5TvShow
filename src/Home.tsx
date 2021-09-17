@@ -10,7 +10,7 @@ import { HomeWatchProviders } from './components/HomeWatchProviders';
 import { Loading } from './components/Loading';
 import { NowTrending } from './components/NowTrending';
 
-export const Home: FC  = () => {
+const Home: FC<any>  = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const [popular, setPopular] = useState<any>({})
@@ -75,3 +75,5 @@ export const Home: FC  = () => {
     </div>
   );
 }
+
+export default Home;

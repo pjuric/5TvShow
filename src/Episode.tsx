@@ -7,7 +7,7 @@ import { Gallery } from "./components/Gallery";
 import { Loading } from "./components/Loading";
 import { SeasonCast } from "./components/SeasonCast";
 
-export const Episode: FC = () => {
+const Episode: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const {id} = useParams<any>()
@@ -34,7 +34,7 @@ export const Episode: FC = () => {
       setDetails(gotDetails.data)
       setCredits(gotCredits.data)
       setVideos(gotVideos.data.results)
-      setImages(gotImages.data)
+      setImages(gotImages.data.stills)
       setLoading(false)
       return gotDetails;
     }
@@ -47,7 +47,6 @@ export const Episode: FC = () => {
         <Loading/>
       :
         <div>
-          {/* {console.log(credits.crew)} */}
           <EpisodeBanner air_date={details.air_date} episode_number={details.episode_number} name={details.name} overview={details.overview} season_number={details.season_number} still_path={details.still_path} vote_average={details.vote_average} vote_count={details.vote_count}/>
           <SeasonCast credits={credits.cast}/>
           {credits.crew.length > 0 && credits.crew.length > 0 ? <EpisodeCrewAndGuests crew={credits.crew} guests={credits.guest_stars}/> : <div></div>}
@@ -57,3 +56,5 @@ export const Episode: FC = () => {
     </div>
   );
 }
+
+export default Episode;

@@ -8,7 +8,7 @@ import { ShowGallery } from './components/ShowGallery';
 import { ShowOverall } from './components/ShowOverall';
 import { ShowSeasonsAndLastEpisode } from './components/ShowSeasonsAndLastEpisode';
 
-export const Show: FC = () => {
+const Show: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const {id} = useParams<any>()
@@ -70,3 +70,5 @@ export const Show: FC = () => {
     </div>
   );
 }
+
+export default Show;
