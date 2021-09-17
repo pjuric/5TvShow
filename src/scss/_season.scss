@@ -200,3 +200,47 @@
         }
     }
 }
+
+.gallery{
+
+    h2{
+        padding-bottom: 5px;
+        border-bottom: 1px solid $white;
+    }
+
+    .galleryContainer{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        width: 100%;
+        column-gap: 50px;
+
+        @include responsive(950px){
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include responsive(650px){
+            grid-template-columns: 1fr;
+            row-gap: 25px;
+            column-gap: 0;
+        }
+    }
+
+    .galleryImages{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+
+        @include responsive(950px){
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .showGalleryImage{
+            max-height: auto;
+        }
+
+        img{
+            max-height: auto;
+        }
+    }
+}
