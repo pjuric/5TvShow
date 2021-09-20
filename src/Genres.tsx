@@ -8,7 +8,6 @@ import { GenreResults } from './components/GenreResults';
 import { GenresBanner } from './components/GenresBanner';
 import { GenresList } from './components/GenresList';
 import { Loading } from './components/Loading';
-import { NotFound } from './components/NotFound';
 
 const Genres: FC = () => {
 
@@ -34,6 +33,8 @@ const Genres: FC = () => {
       setUrlResults(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}&language=en-US&page=${page}`)
     } else if(id==="0" && name==="Popular"){
       setUrlResults(`https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
+    } else if(id && !name){
+      setUrlResults(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&page=1&include_adult=true&query=${id}`)
     } else{
       setUrlResults(`https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${id}`)
     }
@@ -54,13 +55,13 @@ const Genres: FC = () => {
       { loading ?
           <Loading/>
       : results.length === 0 ?
-          <NotFound/>
+          <h1>No results</h1>
       : 
         <div>
-          <GenresBanner backdrop_path={results[0].backdrop_path} id={id} name={name}/>
-          <GenresList genres={genres} id={id} name={name} setPage={setPage}/>
+          <GenresBanner backdrop_path={results[0].backdrop_path} id={id} name={name ? name : id}/>
+          {id && name ? <GenresList genres={genres} id={id} name={name} setPage={setPage}/> : <div className="heightDiv"></div>}
           <GenreResults results={results}/>
-          {page && page > 0 ?
+          {page && page > 0 && id && name ?
             <div className="genresResultsPagination">
               <div className="genresResultPaginationContainer">
                 <div  onClick={() => {setPage(1);}}><a className={page===1 ? "paginationActive" : ""} href="#scroll">1</a></div>

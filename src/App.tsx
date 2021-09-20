@@ -33,6 +33,9 @@ const App = () => {
                   <Route exact path="/genres/:id/:name">
                     <Genres/>
                   </Route>
+                  <Route exact path="/genres/:id">
+                    <Genres/>
+                  </Route>
                   <Route exact path="/people">
                     <People/>
                   </Route>

@@ -101,6 +101,7 @@
 }
 
 .genreResultsContainer{
+    position: relative;
     display: grid;
     margin-top: 75px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -178,4 +179,8 @@
             }
         }   
     }
+}
+
+.heightDiv{
+    margin-top: 350px;
 }

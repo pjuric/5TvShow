@@ -1,7 +1,24 @@
-import * as React from 'react';
-import { FC } from 'react';
+import { FC, useState, SetStateAction } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export const Nav: FC = () => {
+
+  const [query, setQuery] = useState<string>("")
+  const [search, setSearch] = useState<string>("")
+  const history = useHistory();
+
+  const updateSearch = (e: { target: { value: SetStateAction<string>; }; }) => {
+    setSearch(e.target.value);
+  };
+  
+  const updateQuery = (e: { preventDefault: () => void; }) => {
+      e.preventDefault();
+      setQuery(search);
+      setSearch(''); 
+      let path = `/genres/${search}`;
+      history.push(path);
+  }
+
   return (
     <div id="nav" className="">
         <div className="navContainer">
@@ -14,10 +31,16 @@ export const Nav: FC = () => {
                 <a href="/genres/0/Trending">Genres</a>
                 <a href="/people">People</a>
             </div>
-            <div className="searchContainer">
-                <input type="text" placeholder="Search Tv Shows"/>
-                <img src="/search.svg" alt=""/>
-            </div>
+            <form onSubmit={updateQuery} className="searchContainer">
+                <input 
+                  type="text" 
+                  placeholder="Search Tv Shows" 
+                  onChange={updateSearch}
+                  value={search}
+                  required
+                />
+                <button type="submit"><img src="/search.svg" alt=""/></button>
+            </form>
         </div>
       <div className="responsiveNavLinks">
         <a href="/">Home</a>

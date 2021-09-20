@@ -233,7 +233,7 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  height: 30px;
+  height: 35px;
   padding: 10px;
   border-radius: 5px;
 }
@@ -244,7 +244,7 @@ a {
 
 @media (max-width: 850px) {
   .navContainer .searchContainer {
-    height: 25px;
+    height: 30px;
     background: #171616;
   }
 }
@@ -286,19 +286,34 @@ a {
   }
 }
 
-.navContainer .searchContainer img {
+.navContainer .searchContainer button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.navContainer .searchContainer button img {
   cursor: pointer;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
 
-.navContainer .searchContainer img:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+.navContainer .searchContainer button img:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+}
+
+@media (max-width: 500px) {
+  .navContainer .searchContainer button img:hover {
+    -webkit-transform: unset;
+            transform: unset;
+  }
 }
 
 @media (max-width: 850px) {
-  .navContainer .searchContainer img {
+  .navContainer .searchContainer button img {
     width: 25px;
   }
 }
@@ -1694,6 +1709,7 @@ h2 {
 }
 
 .genreResultsContainer {
+  position: relative;
   display: -ms-grid;
   display: grid;
   margin-top: 75px;
@@ -1844,6 +1860,10 @@ h2 {
 
 .genresResultsPagination .genresResultPaginationContainer div .paginationActive {
   color: #FFD028;
+}
+
+.heightDiv {
+  margin-top: 350px;
 }
 
 .peopleContainer {
