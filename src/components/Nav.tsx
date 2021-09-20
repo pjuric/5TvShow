@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 
 export const Nav: FC = () => {
 
-  const [query, setQuery] = useState<string>("")
   const [search, setSearch] = useState<string>("")
   const history = useHistory();
 
@@ -13,7 +12,6 @@ export const Nav: FC = () => {
   
   const updateQuery = (e: { preventDefault: () => void; }) => {
       e.preventDefault();
-      setQuery(search);
       setSearch(''); 
       let path = `/genres/${search}`;
       history.push(path);
