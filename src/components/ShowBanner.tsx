@@ -60,7 +60,7 @@ export const ShowBanner:FC<Props> = ({id, backdrop_path, poster_path, name, tagl
                         <ShowGenre key={featured.id} id={featured.id} name={featured.name}/>
                     ))}
                 </div>
-                <p className="showOverview">{overview}</p>
+                {overview ? <p className="showOverview">{overview}</p> : <p className="showOverview">No overview avaliable at the moment...</p>}
                 <div className="showButtonsAndNetwork">
                     <div className="showButtons">
                         {homepage && <WhiteButton link={homepage} buttonName="Watch" external={true}/>}

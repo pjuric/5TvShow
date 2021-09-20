@@ -48,8 +48,8 @@ const Episode: FC = () => {
       :
         <div>
           <EpisodeBanner air_date={details.air_date} episode_number={details.episode_number} name={details.name} overview={details.overview} season_number={details.season_number} still_path={details.still_path} vote_average={details.vote_average} vote_count={details.vote_count}/>
-          <SeasonCast credits={credits.cast}/>
-          {credits.crew.length > 0 && credits.crew.length > 0 ? <EpisodeCrewAndGuests crew={credits.crew} guests={credits.guest_stars}/> : <div></div>}
+          {credits.cast.length > 0 && <SeasonCast credits={credits.cast}/>}
+          {credits.crew.length > 0 && credits.guest_stars.length > 0 ? <EpisodeCrewAndGuests crew={credits.crew} guests={credits.guest_stars}/> : <div></div>}
           {videos.length > 0 && <Gallery videos={videos} images={images}/>}
         </div>
       }

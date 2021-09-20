@@ -1,0 +1,279 @@
+.personBanner{
+
+    .personBannerGradient{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        height: auto;
+
+        background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0.3) 51.74%, #000000 100%);
+
+        @include responsive(700px){
+            top: 150px;
+        }
+
+        img{
+            position: relative;
+            width: 100%;
+            height: auto;
+            max-height: 100vh;
+            z-index: -20;
+            object-fit: cover;
+            filter: blur(2px);
+        }
+    }
+
+    .personBannerContainer{
+        position: relative;
+        width: 100%;
+        @include flex(space-between, row);
+        align-items: flex-start;
+
+        @include responsive(950px){
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @include responsive(800px){
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .personBannerPosters{
+            width: 25%;
+
+            @include responsive(800px){
+                width: 40%;
+            }
+
+            @include responsive(600px){
+                width: 50%;
+            }
+
+            .personBannerPostersMainImage{
+                width: 100%;
+                height: auto;
+                border-radius: 5px;
+            }
+
+            .personBannerExternalId{
+                @include flex(space-between, row);
+            }
+        }
+
+        .personBannerContent{
+            width: 70%;
+
+            @include responsive(950px){
+                width: 100%;
+            }
+
+            h1{
+                @include mainHeading(left, none);
+                margin: 0;
+            }
+
+            h2{
+                margin: 0;
+                font-style: italic;
+                font-weight: normal;
+                line-height: 42px;
+                font-size: 36px;
+                letter-spacing: 1.32px;
+                overflow: hidden;
+                margin-bottom: 25px;
+
+                @include responsive(500px){
+                    font-size: 25px;
+                }
+            }
+
+            p{
+                @include overviewParagraph;
+                display: -webkit-box;
+                -webkit-line-clamp: 13;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                overflow: hidden;
+
+                @include responsive(1200px){
+                    -webkit-line-clamp: 8;
+                }
+
+                @include responsive(950px){
+                    -webkit-line-clamp: unset;
+                }
+            }
+
+            .personBannerDetails{
+                @include flex(space-between, row);
+                flex-wrap: wrap;
+
+                p{
+                    @include overviewParagraph;
+                    opacity: 1;
+
+                    span{
+                        color: $yellow;
+                    }
+                }
+            }
+
+            .personBannerButtons{
+                padding: 10px 0;
+            }
+        }
+    }
+}
+
+.personShows{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 50px;
+
+    @include responsive(1150px){
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+
+    @include responsive(900px){
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include responsive(750px){
+        column-gap: 10px;
+    }
+
+    @include responsive(550px){
+        grid-template-columns: 1fr;
+    }
+}
+
+.personShow{
+
+    .personShowImageLink{
+
+        &:hover + .showCastNormal{
+            opacity: 0;
+
+            @include responsive(500px){
+                opacity: 1;
+            }
+        }
+    }
+
+    img{
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        transition: 1s ease;
+
+        &:hover{
+            -webkit-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            transform: scale(1.2);
+            transition: 1s ease;
+
+            @include responsive(500px){
+                transform: unset;
+            }
+        }
+    }
+
+    .showCastNormal{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+        opacity: 0.8;
+        margin: 0;
+        transition: 0.5s ease;
+
+        @include responsive(1000px){
+            font-size: 13px;
+        }
+    }
+
+    .showCastThin{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 22px;
+        opacity: 0.8;
+
+        @include responsive(1000px){
+            font-size: 13px;
+        }
+    }
+}
+
+.personImages{
+    width: 100%;
+
+    .personImagesProfiles{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+
+        @include responsive(800px){
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        @include responsive(600px){
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        img{
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    }
+
+    .personImagesBackdrops{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin-bottom: 15px;
+
+        @include responsive(800px){
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @include responsive(600px){
+            grid-template-columns: 1fr 1fr;
+        }
+
+        img{
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    }
+
+    .personImagesPosters{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+
+        @include responsive(800px){
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        @include responsive(600px){
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        img{
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    }
+}

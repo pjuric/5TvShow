@@ -46,9 +46,9 @@ const Season: FC = () => {
         <Loading/>
       :
         <div>
-          <SeasonBanner poster_path={details.poster_path} name={details.name} season_number={details.season_number} overview={details.overview} still_path={details.episodes[0].still_path }/>
+          <SeasonBanner poster_path={details.poster_path} name={details.name} season_number={details.season_number} overview={details.overview} still_path={details.episodes[0].still_path} air_date={details.air_date}/>
           <SeasonEpisodes episodes={details.episodes} tvid={id}/>
-          <SeasonCast credits={credits}/>
+          {credits && credits.length > 0 && <SeasonCast credits={credits}/>}
           {videos.length > 0 && <Gallery videos={videos} images={images}/>}
         </div>
       }

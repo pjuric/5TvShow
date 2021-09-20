@@ -6,9 +6,10 @@ interface Props {
   season_number: number; 
   overview: string;
   still_path: any;
+  air_date: string;
 }
 
-export const SeasonBanner: FC<Props> = ({ poster_path, name, season_number, overview, still_path}) => {
+export const SeasonBanner: FC<Props> = ({ poster_path, name, season_number, overview, still_path, air_date}) => {
 
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 
@@ -21,7 +22,7 @@ export const SeasonBanner: FC<Props> = ({ poster_path, name, season_number, over
             <img className="seasonBannerPoster" src={poster_path ? `${baseUrl}${poster_path}` : "/examplePoster.png"} alt={name}/>
             <div className="seasonDetailsSection">
                 <h1>{name}</h1>
-                {name.includes("Season") || name.includes("Specials") ? <div></div> : <h2>Season {season_number}</h2>}
+                {name.includes("Season") || name.includes("Specials") ? <h2>{air_date.slice(0,4)}.</h2> : <h2>Season {season_number} ({air_date.slice(0,4)}.)</h2>}
                 <p className="seasonOverview">{overview ? overview : "No overview avaliable."}</p>
             </div>
         </div>
