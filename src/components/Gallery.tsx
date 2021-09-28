@@ -10,7 +10,6 @@ export const Gallery: FC<any> = ({ videos, images }) => {
     useEffect((): void => {
         setNumberOfImages(4*numberOfVideos)
     }, [numberOfVideos])
-    
 
   return (
     <div className="gallery">

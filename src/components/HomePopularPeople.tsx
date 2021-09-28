@@ -1,8 +1,12 @@
-import * as React from 'react';
 import { FC } from 'react';
 import { HomePopularPerson } from './HomePopularPerson';
+import { People } from '../interfaces';
 
-export const HomePopularPeople: FC<any> = ({popularPeople}) => {
+interface Props{
+  popularPeople: People[];
+}
+
+export const HomePopularPeople: FC<Props> = ({popularPeople}) => {
 
   const popularPeopleSliced = popularPeople.slice(0, 4);
 

@@ -1,9 +1,13 @@
-import * as React from 'react';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { HomeTopRatedImage } from './HomeTopRatedImage';
+import { ShowResults } from '../interfaces';
 
-export const HomeTopRated: FC<any> = ({topRated}) => {
+interface Props{
+  topRated: ShowResults[];
+}
+
+export const HomeTopRated: FC<Props> = ({topRated}) => {
 
   const topRatedSliced = topRated.slice(0, 4);
 

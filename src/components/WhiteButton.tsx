@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {FC} from 'react';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   buttonName: string,
 }
 
-export const WhiteButton: React.FC<Props> = ({link, buttonName, external}) => {
+export const WhiteButton: FC<Props> = ({link, buttonName, external}) => {
   return (
     <Link to={{ pathname: `${link}` }} target={external ? "_blank" : "_self"} className="whiteButton">
       {buttonName}

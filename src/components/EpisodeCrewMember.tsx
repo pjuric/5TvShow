@@ -10,7 +10,7 @@ interface Props{
 
 export const EpisodeCrewMember: FC<Props> = ({ id, name, profile_path, job }) => {
 
-    const baseUrl = "https://image.tmdb.org/t/p/original/"
+  const baseUrl = "https://image.tmdb.org/t/p/original/"
 
   return (
     <div className="episodeCrewMember">

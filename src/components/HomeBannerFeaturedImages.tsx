@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +14,7 @@ export const HomeBannerFeaturedImages:FC<Props> = ({id, name, overview, backdrop
   
   return (
     <div>
-        <Link to={`show/${id}`}>
+        <Link className="homeBannerFeaturedImageContainer" to={`show/${id}`}>
             <div className="homeBannerFeaturedImages">
               <img 
                 className="homeBannerImage" 
@@ -26,7 +25,7 @@ export const HomeBannerFeaturedImages:FC<Props> = ({id, name, overview, backdrop
                 } 
                 alt={name}
               />
-              <p>{overview ? overview : "No description avaliable"}</p>
+              <p className="homeBannerFeaturedImagesParagraph">{overview ? overview : "No description avaliable"}</p>
             </div>
         </Link>
         <h2 className="homeBannerthirdHeading">{name}</h2>

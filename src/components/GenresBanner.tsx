@@ -1,7 +1,13 @@
 import { FC } from 'react';
 import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 
-export const GenresBanner: FC<any | null> = ({backdrop_path, id, name}) => {
+interface Props{
+  backdrop_path: string | null;
+  id: number;
+  name: string;
+}
+
+export const GenresBanner: FC<Props> = ({backdrop_path, id, name}) => {
 
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 

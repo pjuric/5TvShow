@@ -733,9 +733,9 @@ a {
 }
 
 .homeBannerFeaturedImages img:hover {
-  opacity: 0.3;
-  -webkit-filter: blur(2px);
-          filter: blur(2px);
+  opacity: 0.7;
+  -webkit-filter: blur(0.7px);
+          filter: blur(0.7px);
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
@@ -756,6 +756,19 @@ a {
   font-size: 14px;
   line-height: 22px;
   display: none;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.homeBannerFeaturedImageContainer:hover p {
+  display: -webkit-box;
+  display: none;
+  -webkit-animation: slide-in-right 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-right 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.homeBannerFeaturedImageContainer:hover + .homeBannerthirdHeading {
+  margin-left: 0;
 }
 
 .homeBannerthirdHeading {
@@ -768,6 +781,8 @@ a {
   margin-bottom: 15px;
   margin-bottom: 15px;
   margin-top: 5px;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 @media (max-width: 500px) {

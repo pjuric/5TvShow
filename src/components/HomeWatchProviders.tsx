@@ -1,8 +1,12 @@
-import * as React from 'react';
 import { FC } from 'react';
 import { HomeWatchProvider } from './HomeWatchProvider';
+import { WatchProviders } from '../interfaces';
 
-export const HomeWatchProviders: FC<any> = ({watchProviders}) => {
+interface Props{
+  watchProviders: WatchProviders[];
+}
+
+export const HomeWatchProviders: FC<Props> = ({watchProviders}) => {
 
   const watchProvidersSliced = watchProviders.slice(0, 12);
 

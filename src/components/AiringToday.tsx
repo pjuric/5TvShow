@@ -1,10 +1,14 @@
-import * as React from 'react';
 import { FC } from 'react';
 import { AiringPoster } from './AiringPoster';
+import { ShowResults } from '../interfaces';
 
-export const AiringToday: FC<any> = (airingToday) => {
+interface Props{
+  airingToday: ShowResults[];
+}
 
-  const airingSliced = airingToday.airingToday.results.slice(0, 6);
+export const AiringToday: FC<Props> = ({airingToday}) => {
+
+  const airingSliced = airingToday.slice(0, 6);
 
   return (
       <div>

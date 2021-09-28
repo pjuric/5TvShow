@@ -9,7 +9,7 @@ interface Props{
 
 export const KnownForShow: FC<Props> = ({id, name, backdrop_path}) => {
 
-    const baseUrl = "https://image.tmdb.org/t/p/original/";
+  const baseUrl = "https://image.tmdb.org/t/p/original/";
 
   return (
     <div className="knownForShow">

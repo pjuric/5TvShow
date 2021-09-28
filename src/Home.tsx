@@ -1,3 +1,4 @@
+import { ShowResults, ShowResultsTrending, Genres, WatchProviders, People } from './interfaces';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { FC } from 'react';
@@ -10,16 +11,16 @@ import { HomeWatchProviders } from './components/HomeWatchProviders';
 import { Loading } from './components/Loading';
 import { NowTrending } from './components/NowTrending';
 
-const Home: FC<any>  = () => {
+const Home: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const [popular, setPopular] = useState<any>({})
-  const [airingToday, setAiringToday] = useState<any>({})
-  const [trending, setTrending] = useState<any>({})
-  const [topRated, setTopRated] = useState<any>({})
-  const [genres, setGenres] = useState<any>({})
-  const [watchProviders, setWatchProviders] = useState<any>({})
-  const [popularPeople, setPopularPeople] = useState<any>({})
+  const [popular, setPopular] = useState<ShowResults[]>([])
+  const [airingToday, setAiringToday] = useState<ShowResults[]>([])
+  const [trending, setTrending] = useState<ShowResultsTrending[]>([])
+  const [topRated, setTopRated] = useState<ShowResults[]>([])
+  const [genres, setGenres] = useState<Genres[]>([])
+  const [watchProviders, setWatchProviders] = useState<WatchProviders[]>([])
+  const [popularPeople, setPopularPeople] = useState<People[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   const urlPopular = `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`
@@ -30,7 +31,7 @@ const Home: FC<any>  = () => {
   const urlWatchProviders = `https://api.themoviedb.org/3/watch/providers/tv?api_key=${API_KEY}&language=en-US`
   const urlPopularPeople = `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=en-US&page=1`
 
-  useEffect((): void => {
+  useEffect(() => {
     const getPopular = () => axios.get(urlPopular)
     const getAiringToday = () => axios.get(urlAiringToday)
     const getTrending = () => axios.get(urlTrending)
@@ -40,8 +41,8 @@ const Home: FC<any>  = () => {
     const getPopularPeople = () => axios.get(urlPopularPeople)
     async function fetchData() {
       const [gotPopular, gotAiringToday, gotTrending, gotTopRated, gotGenres, gotWatchProviders, gotPopularPeople] = await axios.all([getPopular(), getAiringToday(), getTrending(), getTopRated(), getGenres(), getWatchProviders(), getPopularPeople()]);
-      setPopular(gotPopular.data)
-      setAiringToday(gotAiringToday.data)
+      setPopular(gotPopular.data.results)
+      setAiringToday(gotAiringToday.data.results)
       setTrending(gotTrending.data.results)
       setTopRated(gotTopRated.data.results)
       setGenres(gotGenres.data.genres)
@@ -59,7 +60,8 @@ const Home: FC<any>  = () => {
         <Loading/>
       :
         <div>
-          <HomeBanner popular={popular.results}/>
+        
+          <HomeBanner popular={popular}/>
           <AiringToday airingToday={airingToday}/>
           <div className="topRatedAndGenres">
             <HomeTopRated topRated={topRated}/>

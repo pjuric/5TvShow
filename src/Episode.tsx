@@ -6,6 +6,41 @@ import { EpisodeCrewAndGuests } from "./components/EpisodeCrewAndGuests";
 import { Gallery } from "./components/Gallery";
 import { Loading } from "./components/Loading";
 import { SeasonCast } from "./components/SeasonCast";
+import { Stills } from "./interfaces";
+import { Videos } from "./interfaces";
+
+// interface Crew  {
+//   id: number,
+//   credit_id: string,
+//   name: string,
+//   department: string,
+//   job: string,
+//   profile_path: string | null,
+// }
+
+// interface GuestStars {
+//     id: number,
+//     name: string,
+//     credit_id: string,
+//     character: string,
+//     order: number,
+//     profile_path: string | null,
+// }
+
+// interface EpisodeDetails{
+//   air_date: string;
+//   crew: Crew[];
+//   episode_number: number;
+//   guest_stars: GuestStars[];
+//   name: string;
+//   overview: string;
+//   id: number;
+//   production_code: string | null;
+//   season_number: number;
+//   still_path: string | null;
+//   vote_average: number;
+//   vote_count: number;
+// }
 
 const Episode: FC = () => {
 
@@ -15,8 +50,8 @@ const Episode: FC = () => {
   const {enumber} = useParams<any>()
   const [details, setDetails] = useState<any>({})
   const [credits, setCredits] = useState<any>({})
-  const [videos, setVideos] = useState<any>({})
-  const [images, setImages] = useState<any>({})
+  const [videos, setVideos] = useState<Videos[]>([])
+  const [images, setImages] = useState<Stills[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   const urlDetails = `https://api.themoviedb.org/3/tv/${id}/season/${snumber}/episode/${enumber}?api_key=${API_KEY}&language=en-US`

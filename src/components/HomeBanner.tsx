@@ -1,26 +1,14 @@
-import * as React from 'react';
 import { FC } from 'react';
 import { HomeBannerFeaturedImages } from './HomeBannerFeaturedImages';
 import { WhiteButton } from './WhiteButton';
 import { YellowIcons } from './YellowIcons';
+import { ShowResults } from '../interfaces';
 
-interface PopularMovie {
-  poster_path: string | null,
-  popularity: number,
-  id: number,
-  backdrop_path: string | null,
-  vote_average: number,
-  overview: string,
-  firs_air_date: string,
-  origin_country: string[],
-  genre_ids: number[],
-  original_language: string,
-  voteCount: number,
-  name: string,
-  original_name: string,
+interface Props{
+  popular: ShowResults[];
 }
 
-export const HomeBanner: FC<PopularMovie[] | any> = ({popular}) => {
+export const HomeBanner: FC<Props> = ( {popular} ) => {
   
   const baseUrl = "https://image.tmdb.org/t/p/original/"
   const popularSliced = popular.slice(1, 5);

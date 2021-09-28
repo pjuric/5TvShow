@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { FC } from 'react';
+import { FC, Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -7,7 +6,7 @@ interface Props {
   name: string;
   poster_path: string | null;
   backdrop_path: string | null;
-  setBackground: React.Dispatch<React.SetStateAction<any>>;
+  setBackground: Dispatch<SetStateAction<any>>;
   overview: string | null;
   vote_average: number; 
   vote_count: number; 

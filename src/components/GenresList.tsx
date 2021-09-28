@@ -1,12 +1,11 @@
-import { FC } from 'react';
+import { FC, Dispatch } from 'react';
 import { Genre } from './Genre';
-
 
 interface Props {
   genres: any;
   id: any;
   name: string;
-  setPage: React.Dispatch<React.SetStateAction<any>>;
+  setPage: Dispatch<React.SetStateAction<any>>;
 }
 
 export const GenresList: FC<Props> = ({genres, id, name, setPage}) => {

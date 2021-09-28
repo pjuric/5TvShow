@@ -1,8 +1,12 @@
-import * as React from 'react';
 import { FC } from 'react';
 import { HomeGenre } from './HomeGenre';
+import { Genres } from '../interfaces'
 
-export const HomeGenres: FC<any> = ({genres}) => {
+interface Props{
+  genres: Genres[];
+}
+
+export const HomeGenres: FC<Props> = ({genres}) => {
   return (
     <div className="homeGenres">
       <h2>Genres</h2>

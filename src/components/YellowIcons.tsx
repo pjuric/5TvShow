@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { FC } from 'react';
 import LanguageRoundedIcon from '@material-ui/icons/LanguageRounded';
 import StarRoundedIcon from '@material-ui/icons/StarRounded';

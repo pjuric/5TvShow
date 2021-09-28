@@ -9,7 +9,6 @@ interface Props{
     profile_path: string;
 }
 
-
 export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
 
     const baseUrl = "https://image.tmdb.org/t/p/original/";
@@ -29,7 +28,7 @@ export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
         fetchData();
     }, [urlCredits])
 
-  return (
+    return (
       <div>
       {loading ?
         <div></div>
@@ -63,8 +62,7 @@ export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
             <div className="noAvaliableShows">
                 <h2>No avaliable TV Shows.</h2>
             </div>
-            }
-            
+            }   
         </div>
       }
     </div>
