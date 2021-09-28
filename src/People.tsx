@@ -2,17 +2,18 @@ import axios from "axios";
 import { FC, SetStateAction, useEffect, useState } from "react";
 import { Loading } from "./components/Loading";
 import { PeopleResult } from "./components/PeopleResult";
+import { IPeople } from "./interfaces";
 
 const People: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const [popular, setPopular] = useState<any>({})
+  const [popular, setPopular] = useState<IPeople[]>([])
   const [query, setQuery] = useState<string>("")
   const [search, setSearch] = useState<string>("")
   const [url, setUrl] = useState<string>(`https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=en-US&page=1`)
   const [loading, setLoading] = useState<boolean>(true)
 
-  useEffect((): void => {
+  useEffect(() => {
     if(query){
       setUrl(`https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`)
     } else{

@@ -2,6 +2,7 @@ import axios from "axios";
 import { FC, Key, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { KnownForShow } from "./KnownForShow";
+import { IPersonCreditsCast } from "../interfaces"
 
 interface Props{ 
     id: number; 
@@ -13,7 +14,7 @@ export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
 
     const baseUrl = "https://image.tmdb.org/t/p/original/";
     const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-    const [credits, setCredits] = useState<any>({})
+    const [credits, setCredits] = useState<IPersonCreditsCast[]>([])
     const [loading, setLoading] = useState<boolean>(true)
 
     const urlCredits = `https://api.themoviedb.org/3/person/${id}/tv_credits?api_key=${API_KEY}&language=en-US`
@@ -53,7 +54,7 @@ export const PeopleResult: FC<Props> = ({id, name, profile_path}) => {
                 <div className="peopleResultKnownFor">
                     <h2>Starred in:</h2>
                     <div className="knownForContainer">
-                        {credits.slice(0, 2).map((featured: { id: number; name: string; backdrop_path: string | null;}, index: Key | null | undefined) => (
+                        {credits.slice(0, 2).map((featured: { id: number; name: string; backdrop_path: string | null;}, index: Key) => (
                             <KnownForShow key={index} id={featured.id} name={featured.name} backdrop_path={featured.backdrop_path}/>
                         ))}
                     </div>

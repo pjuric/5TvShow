@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { HomePopularPerson } from './HomePopularPerson';
-import { People } from '../interfaces';
+import { IPeople } from '../interfaces';
 
 interface Props{
-  popularPeople: People[];
+  popularPeople: IPeople[];
 }
 
 export const HomePopularPeople: FC<Props> = ({popularPeople}) => {

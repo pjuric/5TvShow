@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import { FC, Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Props {
-  id: any;
-  name: any;
-  idActual: any;
-  nameActual: any;
-  setPage?: React.Dispatch<React.SetStateAction<any>>;
+  id: number;
+  name: string;
+  idActual: number;
+  nameActual: string;
+  setPage?: Dispatch<SetStateAction<number>>;
 }
 
 export const Genre: FC<Props> = ({id, name, idActual, nameActual, setPage}) => {

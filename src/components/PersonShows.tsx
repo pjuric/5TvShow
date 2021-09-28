@@ -1,5 +1,10 @@
 import { FC, Key } from "react";
 import { PersonShow } from "./PersonShow";
+// import { IPersonCreditsCast, IPersonCreditsCrew } from '../interfaces'
+
+// interface Props{
+//   credits: IPersonCreditsCast[] | IPersonCreditsCrew[];
+// }
 
 export const PersonShows: FC<any> = ({ credits }) => {
   return (

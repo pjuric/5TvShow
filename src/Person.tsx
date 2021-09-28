@@ -5,16 +5,17 @@ import { Loading } from './components/Loading';
 import { PersonBanner } from './components/PersonBanner';
 import { PersonImages } from './components/PersonImages';
 import { PersonShows } from './components/PersonShows';
+import { IPersonDetails, IProfiles, ITaggedImages, IPersonExternalIds, IPersonCredits } from './interfaces';
 
 const Person = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const {id} = useParams<any>()
-  const [details, setDetails] = useState<any>({})
-  const [images, setImages] = useState<any>({})
-  const [taggedImages, setTaggedImages] = useState<any>({})
-  const [externalId, setExternalId] = useState<any>({})
-  const [credits, setCredits] = useState<any>({})
+  const [details, setDetails] = useState<IPersonDetails>()
+  const [images, setImages] = useState<IProfiles[]>([])
+  const [taggedImages, setTaggedImages] = useState<ITaggedImages[]>([])
+  const [externalId, setExternalId] = useState<IPersonExternalIds>()
+  const [credits, setCredits] = useState<IPersonCredits>()
   const [loading, setLoading] = useState<boolean>(true)
 
   const urlDetails = `https://api.themoviedb.org/3/person/${id}?api_key=${API_KEY}&language=en-US`
@@ -46,10 +47,10 @@ const Person = () => {
     <div>
       {loading ?
         <Loading/>
-      :
+      : details &&
         <div>
           <PersonBanner biography={details.biography} birthday={details.birthday} deathday={details.deathday} homepage={details.homepage} imdb_id={details.imdb_id} known_for_department={details.known_for_department} name={details.name} place_of_birth={details.place_of_birth} popularity={details.popularity} profile_path={details.profile_path} taggedImages={taggedImages} externalId={externalId}/>
-          {credits.cast && credits.cast.length > 0 ?
+          {credits && credits.cast && credits.cast.length > 0 ?
             <div>
               <h2>Cast Credits</h2>
               <PersonShows credits={credits.cast}/>
@@ -57,7 +58,7 @@ const Person = () => {
           :
             <div></div>
           }
-          {credits.crew && credits.crew.length > 0 ?
+          {credits && credits.crew && credits.crew.length > 0 ?
             <div>
               <h2>Crew Credits</h2>
               <PersonShows credits={credits.crew}/>

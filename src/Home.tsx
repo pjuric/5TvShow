@@ -1,4 +1,4 @@
-import { ShowResults, ShowResultsTrending, Genres, WatchProviders, People } from './interfaces';
+import { ShowResults, ShowResultsTrending, IGenres, WatchProviders, IPeople } from './interfaces';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { FC } from 'react';
@@ -18,9 +18,9 @@ const Home: FC = () => {
   const [airingToday, setAiringToday] = useState<ShowResults[]>([])
   const [trending, setTrending] = useState<ShowResultsTrending[]>([])
   const [topRated, setTopRated] = useState<ShowResults[]>([])
-  const [genres, setGenres] = useState<Genres[]>([])
+  const [genres, setGenres] = useState<IGenres[]>([])
   const [watchProviders, setWatchProviders] = useState<WatchProviders[]>([])
-  const [popularPeople, setPopularPeople] = useState<People[]>([])
+  const [popularPeople, setPopularPeople] = useState<IPeople[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   const urlPopular = `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`

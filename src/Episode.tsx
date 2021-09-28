@@ -6,41 +6,7 @@ import { EpisodeCrewAndGuests } from "./components/EpisodeCrewAndGuests";
 import { Gallery } from "./components/Gallery";
 import { Loading } from "./components/Loading";
 import { SeasonCast } from "./components/SeasonCast";
-import { Stills } from "./interfaces";
-import { Videos } from "./interfaces";
-
-// interface Crew  {
-//   id: number,
-//   credit_id: string,
-//   name: string,
-//   department: string,
-//   job: string,
-//   profile_path: string | null,
-// }
-
-// interface GuestStars {
-//     id: number,
-//     name: string,
-//     credit_id: string,
-//     character: string,
-//     order: number,
-//     profile_path: string | null,
-// }
-
-// interface EpisodeDetails{
-//   air_date: string;
-//   crew: Crew[];
-//   episode_number: number;
-//   guest_stars: GuestStars[];
-//   name: string;
-//   overview: string;
-//   id: number;
-//   production_code: string | null;
-//   season_number: number;
-//   still_path: string | null;
-//   vote_average: number;
-//   vote_count: number;
-// }
+import { EpisodeDetails, Credits, IStills, Videos } from "./interfaces";
 
 const Episode: FC = () => {
 
@@ -48,10 +14,10 @@ const Episode: FC = () => {
   const {id} = useParams<any>()
   const {snumber} = useParams<any>()
   const {enumber} = useParams<any>()
-  const [details, setDetails] = useState<any>({})
-  const [credits, setCredits] = useState<any>({})
+  const [details, setDetails] = useState<EpisodeDetails>()
+  const [credits, setCredits] = useState<Credits>()
   const [videos, setVideos] = useState<Videos[]>([])
-  const [images, setImages] = useState<Stills[]>([])
+  const [images, setImages] = useState<IStills[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   const urlDetails = `https://api.themoviedb.org/3/tv/${id}/season/${snumber}/episode/${enumber}?api_key=${API_KEY}&language=en-US`
@@ -82,9 +48,9 @@ const Episode: FC = () => {
         <Loading/>
       :
         <div>
-          <EpisodeBanner air_date={details.air_date} episode_number={details.episode_number} name={details.name} overview={details.overview} season_number={details.season_number} still_path={details.still_path} vote_average={details.vote_average} vote_count={details.vote_count}/>
-          {credits.cast.length > 0 && <SeasonCast credits={credits.cast}/>}
-          {credits.crew.length > 0 && credits.guest_stars.length > 0 ? <EpisodeCrewAndGuests crew={credits.crew} guests={credits.guest_stars}/> : <div></div>}
+          {details && <EpisodeBanner air_date={details.air_date} episode_number={details.episode_number} name={details.name} overview={details.overview} season_number={details.season_number} still_path={details.still_path} vote_average={details.vote_average} vote_count={details.vote_count}/>}
+          {credits && credits.cast.length > 0 && <SeasonCast credits={credits.cast}/>}
+          {credits && credits.crew.length > 0 && credits.guest_stars.length > 0 ? <EpisodeCrewAndGuests crew={credits.crew} guests={credits.guest_stars}/> : <div></div>}
           {videos.length > 0 && <Gallery videos={videos} images={images}/>}
         </div>
       }

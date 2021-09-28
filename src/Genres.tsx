@@ -1,37 +1,34 @@
 import axios from 'axios';
-import * as React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { GenreResults } from './components/GenreResults';
 import { GenresBanner } from './components/GenresBanner';
 import { GenresList } from './components/GenresList';
 import { Loading } from './components/Loading';
+import { IGenres, ShowResults, ShowResultsTrending } from './interfaces';
 
 const Genres: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const urlGenres = `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`
-  const {id} = useParams<any>()
-  const {name} = useParams<any>()
-  const [page, setPage] = useState<any>(1)
-  const [urlResults, setUrlResults] = useState<any>(`https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`)
-  const [genres, setGenres] = useState<any>({})
-  const [results, setResults] = useState<any>({})
+  const {id, name} = useParams<any>()
+  const [page, setPage] = useState<number>(1)
+  const [urlResults, setUrlResults] = useState<string>(`https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`)
+  const [genres, setGenres] = useState<IGenres[]>([])
+  const [results, setResults] = useState<ShowResults[] | ShowResultsTrending[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   
   useEffect(() => {
-    if(id==="0" && name==="Trending"){
+    if(id===0 && name==="Trending"){
       setPage(0)
       setUrlResults(`https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`)
-    } else if(id==="0" && name==="Top Rated"){
+    } else if(id===0 && name==="Top Rated"){
       setUrlResults(`https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`)
-    } else if(id==="0" && name==="Airing Today"){
+    } else if(id===0 && name==="Airing Today"){
       setUrlResults(`https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}&language=en-US&page=${page}`)
-    } else if(id==="0" && name==="On the Air"){
+    } else if(id===0 && name==="On the Air"){
       setUrlResults(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}&language=en-US&page=${page}`)
-    } else if(id==="0" && name==="Popular"){
+    } else if(id===0 && name==="Popular"){
       setUrlResults(`https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
     } else if(id && !name){
       setUrlResults(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&page=1&include_adult=true&query=${id}`)

@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { HomeGenre } from './HomeGenre';
-import { Genres } from '../interfaces'
+import { IGenres } from '../interfaces'
 
 interface Props{
-  genres: Genres[];
+  genres: IGenres[];
 }
 
 export const HomeGenres: FC<Props> = ({genres}) => {
