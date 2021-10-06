@@ -3,6 +3,8 @@ import { FC, useEffect, useState } from "react";
 import { SecondaryButton } from "./SecondaryButton";
 import { ShowGenre } from "./ShowGenre";
 import { WhiteButton } from "./WhiteButton";
+import { IShowGenres, IStills } from '../interfaces'
+
 
 interface Props{
     id: number;
@@ -10,7 +12,7 @@ interface Props{
     poster_path: string | null;
     name: string;
     tagline: string;
-    genres: any;
+    genres: IShowGenres[];
     overview: string;
     homepage: string;
     network: {
@@ -18,7 +20,7 @@ interface Props{
         name: string;
         logo_path: string | null;
     };
-    images: any;
+    images: IStills[];
 }
 
 export const ShowBanner:FC<Props> = ({id, backdrop_path, poster_path, name, tagline, genres, overview, homepage, network, images}) => {

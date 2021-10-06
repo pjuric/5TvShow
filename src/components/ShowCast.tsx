@@ -15,7 +15,7 @@ export const ShowCast: FC<Props> = ({id, name, profile_path, character}) => {
   return (
     <div className="showCast">
         <Link to={`/person/${id}`}>
-            <img src={profile_path ? `${baseUrl}${profile_path}` : "/examplePoster.png"} alt=""/>
+            <img src={profile_path ? `${baseUrl}${profile_path}` : "/examplePoster.png"} alt={name}/>
         </Link>
         <p className="showCastNormal">{name}</p> 
         {character && <p className="showCastThin">as {character}</p>}

@@ -1,8 +1,15 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { ShowSeason } from "./ShowSeason";
+import { IShowSeasons, IShowLastEpisode } from '../interfaces'
 
-export const ShowSeasonsAndLastEpisode: FC<any> = ({seasons, last_episode_to_air, tvid}) => {
+interface Props{
+  seasons: IShowSeasons[];
+  last_episode_to_air: IShowLastEpisode;
+  tvid: string;
+}
+
+export const ShowSeasonsAndLastEpisode: FC<Props> = ({seasons, last_episode_to_air, tvid}) => {
 
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 
@@ -11,7 +18,7 @@ export const ShowSeasonsAndLastEpisode: FC<any> = ({seasons, last_episode_to_air
       <div className="showSeasons">
         <h2>Seasons</h2>
         <div className="showSeasonsContainer">
-          {seasons.map((featured: { id: number; name: string; poster_path: string; tvid: number; season_number: number;}) => (
+          {seasons.map((featured: { id: number; name: string; poster_path: string; season_number: number;}) => (
             // featured.poster_path &&
             <ShowSeason key={featured.id} id={featured.id} name={featured.name} poster_path={featured.poster_path} tvid={tvid} season_number={featured.season_number}/>
           ))}

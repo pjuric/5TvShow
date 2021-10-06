@@ -1,8 +1,14 @@
 import { FC, Key } from "react";
+import { IStills, Videos } from "../interfaces";
 import { ShowGalleryImage } from "./ShowGalleryImage";
 import { ShowGalleryVideo } from "./ShowGalleryVideo";
 
-export const ShowGallery: FC<any> = ({ videos, images }) => {
+interface Props{
+  images: IStills[];
+  videos: Videos[];
+}
+
+export const ShowGallery: FC<Props> = ({ videos, images }) => {
   return (
     <div className="showGallery">
       {videos.length > 1 && 
@@ -19,7 +25,7 @@ export const ShowGallery: FC<any> = ({ videos, images }) => {
       <div>
         <h2>Images</h2>
         <div className="showGalleryImages">
-          {images && images.slice(0, 20).map((featured: {file_path: string;}, index: Key | null | undefined) => (
+          {images && images.slice(0, 20).map((featured: {file_path: string;}, index: Key) => (
            <ShowGalleryImage key={index} file_path={featured.file_path}/>
           ))}
         </div>

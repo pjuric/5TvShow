@@ -5,7 +5,7 @@ interface Props{
   id: number; 
   name: string; 
   poster_path: string;
-  tvid: number; 
+  tvid: string; 
   season_number: number;
 }
 

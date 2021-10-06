@@ -7,18 +7,29 @@ import { ShowCastAndSimilar } from './components/ShowCastAndSimilar';
 import { ShowGallery } from './components/ShowGallery';
 import { ShowOverall } from './components/ShowOverall';
 import { ShowSeasonsAndLastEpisode } from './components/ShowSeasonsAndLastEpisode';
+import { IShowDetails, IStills, IShowExternalId, IShowCreditsCast, ShowResults, Videos, IKeywordProps } from './interfaces'
+
+interface ParamProps{
+  id: string;
+}
+
+interface ImagesProps{
+  backdrops: IStills[];
+  id: number;
+  posters: IStills[];
+}
 
 const Show: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const {id} = useParams<any>()
-  const [details, setDetails] = useState<any>({})
-  const [images, setImages] = useState<any>({})
-  const [keywords, setKeywords] = useState<any>({})
-  const [externalIds, setExternalIds] = useState<any>({})
-  const [credits, setCredits] = useState<any>({})
-  const [similar, setSimilar] = useState<any>({})
-  const [videos, setVideos] = useState<any>({})
+  const {id} = useParams<ParamProps>()
+  const [details, setDetails] = useState<IShowDetails>()
+  const [images, setImages] = useState<ImagesProps>()
+  const [keywords, setKeywords] = useState<IKeywordProps[]>([])
+  const [externalIds, setExternalIds] = useState<IShowExternalId>()
+  const [credits, setCredits] = useState<IShowCreditsCast[]>([])
+  const [similar, setSimilar] = useState<ShowResults[]>([])
+  const [videos, setVideos] = useState<Videos[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   const urlDetails = `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
@@ -60,11 +71,11 @@ const Show: FC = () => {
       :
       <div>
         <div id="showTop"></div>
-        <ShowBanner id={details.id} backdrop_path={details.backdrop_path} poster_path={details.poster_path} name={details.name} tagline={details.tagline} genres={details.genres} overview={details.overview} homepage={details.homepage} network={details.networks[0]} images={images.backdrops}/>
-        <ShowSeasonsAndLastEpisode seasons={details.seasons} last_episode_to_air={details.last_episode_to_air} tvid={id}/>
-        <div id="showOverall"><ShowOverall backdrop_path={details.backdrop_path} first_air_date={details.first_air_date} last_air_date={details.last_air_date} vote_average={details.vote_average} vote_count={details.vote_count} original_language={details.original_language} number_of_seasons={details.number_of_seasons} number_of_episodes={details.number_of_episodes} popularity={details.popularity} type={details.type} spoken_languages={details.spoken_languages} production_countries={details.production_countries} status={details.status} keywords={keywords} externalIds={externalIds}/></div>
-        <ShowCastAndSimilar created_by={details.created_by} credits={credits} similar={similar.slice(0, 4)}/>
-        <ShowGallery videos={videos} images={images.backdrops}/>
+        {details && images && <ShowBanner id={details.id} backdrop_path={details.backdrop_path} poster_path={details.poster_path} name={details.name} tagline={details.tagline} genres={details.genres} overview={details.overview} homepage={details.homepage} network={details.networks[0]} images={images.backdrops}/>}
+        {details && <ShowSeasonsAndLastEpisode seasons={details.seasons} last_episode_to_air={details.last_episode_to_air} tvid={id}/>}
+        <div id="showOverall">{details && <ShowOverall backdrop_path={details.backdrop_path} first_air_date={details.first_air_date} last_air_date={details.last_air_date} vote_average={details.vote_average} vote_count={details.vote_count} original_language={details.original_language} number_of_seasons={details.number_of_seasons} number_of_episodes={details.number_of_episodes} popularity={details.popularity} type={details.type} spoken_languages={details.spoken_languages} production_countries={details.production_countries} status={details.status} keywords={keywords} externalIds={externalIds}/>}</div>
+        {details && <ShowCastAndSimilar created_by={details.created_by} credits={credits} similar={similar.slice(0, 4)}/>}
+        {images && <ShowGallery videos={videos} images={images.backdrops}/>}
       </div>
       }
     </div>

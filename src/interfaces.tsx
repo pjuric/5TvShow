@@ -249,3 +249,151 @@ export interface IPersonExternalIds{
     id: number;
     instagram_id: string | null;
 }
+
+export interface ICreatedBy{
+    id: number;
+    credit_id: string;
+    name: string;
+    gender: number;
+    profile_path: string | null;
+}
+
+interface IShowNetworks{
+    name: string;
+    id: number;
+    logo_path: string | null;
+    origin_country: string;
+}
+
+export interface IShowSeasons{
+    air_date: string;
+    episode_count: number;
+    id: number;
+    name: string; 
+    overview: string;
+    poster_path: string;
+    season_number: number;
+}
+
+export interface IShowGenres{
+    id: number,
+    name: string,
+}
+
+export interface IShowLastEpisode{
+    air_date: string;
+    episode_number: number;
+    id: number;
+    name: string;
+    overview: string;
+    production_code: string;
+    season_number: number;
+    still_path: string | null;
+    vote_average: number;
+    vote_count: number;
+}
+
+export interface IShowSpokenLanguages{
+    english_name: string,
+    iso_639_1: string,
+    name: string,
+}
+
+export interface IShowProductionCountries{
+    iso_3166_1: string,
+    name: string,
+}
+
+export interface IKeywordProps{
+    id: number;
+    name: string;
+}
+
+export interface IShowDetails{
+    backdrop_path: string | null;
+    created_by: ICreatedBy[];
+    episode_run_time: number[];
+    first_air_date: string;
+    genres: IShowGenres[];
+    homepage: string;
+    id: number;
+    in_production: boolean;
+    languages: string[];
+    last_air_date: string;
+    last_episode_to_air: IShowLastEpisode;
+    name: string;
+    next_episode_to_air: null;
+    networks: IShowNetworks[];
+    number_of_episodes: number;
+    number_of_seasons: number;
+    origin_country: string[];
+    original_language: string;
+    original_name: string;
+    overview: string;
+    popularity: number;
+    poster_path: string | null;
+    production_companies: [
+        id: number,
+        logo_path: null | string,
+        name: string,
+        origin_country: string,
+    ];
+    production_countries: IShowProductionCountries[];
+    seasons: IShowSeasons[];
+    spoken_languages: IShowSpokenLanguages[];
+    status: string;
+    tagline: string;
+    type: string;
+    vote_average: number;
+    vote_count: number;
+}
+
+export interface IShowExternalId{
+    imdb_id: string | null;
+    freebase_mid: string | null;
+    freebase_id: string | null;
+    tvdb_id: number | null;
+    tvrage_id: number | null;
+    facebook_id: string | null;
+    instagram_id: string | null;
+    twitter_id: string | null;
+    id: number;
+}
+
+export interface IShowCreditsCastRoles{
+    credit_id: string,
+    character: string,
+    episode_count: number,
+}
+
+export interface IShowCreditsCast{
+    adult: boolean;
+    gender: number | null;
+    id: number;
+    known_for_department: string;
+    name: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string | null;
+    roles: IShowCreditsCastRoles[];
+    total_episode_count: number;
+    order: number;
+}
+
+export interface IShowOverall{
+    backdrop_path: string | null;
+    first_air_date: string;
+    last_air_date: string;
+    vote_average: number;
+    vote_count: number;
+    original_language: string;
+    number_of_seasons: number;
+    number_of_episodes: number;
+    popularity: number;
+    type: string;
+    spoken_languages: IShowSpokenLanguages[];
+    production_countries: IShowProductionCountries[];
+    status: string;
+    keywords: IKeywordProps[];
+    externalIds?: IShowExternalId;
+}

@@ -3,11 +3,10 @@ import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 
 interface Props{
   backdrop_path: string | null;
-  id: number;
   name: string;
 }
 
-export const GenresBanner: FC<Props> = ({backdrop_path, id, name}) => {
+export const GenresBanner: FC<Props> = ({backdrop_path, name}) => {
 
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 
@@ -19,7 +18,7 @@ export const GenresBanner: FC<Props> = ({backdrop_path, id, name}) => {
           :
             `/backdrop.jpg`
           } 
-          alt=""
+          alt={name}
       />
       <h1>{name}</h1>
       <ExpandMoreRoundedIcon fontSize="large"/>

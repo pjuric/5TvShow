@@ -7,6 +7,11 @@ import { GenresList } from './components/GenresList';
 import { Loading } from './components/Loading';
 import { IGenres, ShowResults, ShowResultsTrending } from './interfaces';
 
+// interface Props{
+//   id?: string | undefined;
+//   name?: string | undefined;
+// }
+
 const Genres: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
@@ -19,16 +24,16 @@ const Genres: FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
   
   useEffect(() => {
-    if(id===0 && name==="Trending"){
+    if(id==="0" && name==="Trending"){
       setPage(0)
       setUrlResults(`https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`)
-    } else if(id===0 && name==="Top Rated"){
+    } else if(id==="0" && name==="Top Rated"){
       setUrlResults(`https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`)
-    } else if(id===0 && name==="Airing Today"){
+    } else if(id==="0" && name==="Airing Today"){
       setUrlResults(`https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}&language=en-US&page=${page}`)
-    } else if(id===0 && name==="On the Air"){
+    } else if(id==="0" && name==="On the Air"){
       setUrlResults(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}&language=en-US&page=${page}`)
-    } else if(id===0 && name==="Popular"){
+    } else if(id && id==="0" && name==="Popular"){
       setUrlResults(`https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
     } else if(id && !name){
       setUrlResults(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&page=1&include_adult=true&query=${id}`)
@@ -51,11 +56,12 @@ const Genres: FC = () => {
     <div id="scroll" className="genresContainer">
       { loading ?
           <Loading/>
-      : results.length === 0 ?
+      : results && results.length < 1 ?
           <h1>No results</h1>
       : 
         <div>
-          <GenresBanner backdrop_path={results[0].backdrop_path} id={id} name={name ? name : id}/>
+          {/* {console.log(typeof(id))} */}
+          <GenresBanner backdrop_path={results[0].backdrop_path} name={name ? name : id}/>
           {id && name ? <GenresList genres={genres} id={id} name={name} setPage={setPage}/> : <div className="heightDiv"></div>}
           <GenreResults results={results}/>
           {page && page > 0 && id && name ?
