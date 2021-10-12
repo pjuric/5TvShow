@@ -7,10 +7,14 @@ import { PersonImages } from './components/PersonImages';
 import { PersonShows } from './components/PersonShows';
 import { IPersonDetails, IProfiles, ITaggedImages, IPersonExternalIds, IPersonCredits } from './interfaces';
 
+interface Props{
+  id: string | undefined;
+}
+
 const Person = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const {id} = useParams<any>()
+  const {id} = useParams<Props>()
   const [details, setDetails] = useState<IPersonDetails>()
   const [images, setImages] = useState<IProfiles[]>([])
   const [taggedImages, setTaggedImages] = useState<ITaggedImages[]>([])

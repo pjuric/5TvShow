@@ -7,16 +7,16 @@ import { GenresList } from './components/GenresList';
 import { Loading } from './components/Loading';
 import { IGenres, ShowResults, ShowResultsTrending } from './interfaces';
 
-// interface Props{
-//   id?: string | undefined;
-//   name?: string | undefined;
-// }
+interface Props{
+  id: string;
+  name: string;
+}
 
 const Genres: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const urlGenres = `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`
-  const {id, name} = useParams<any>()
+  const {id, name} = useParams<Props>()
   const [page, setPage] = useState<number>(1)
   const [urlResults, setUrlResults] = useState<string>(`https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`)
   const [genres, setGenres] = useState<IGenres[]>([])

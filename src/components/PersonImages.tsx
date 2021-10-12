@@ -1,6 +1,12 @@
 import { FC, Key } from "react";
+import { ITaggedImages, IProfiles } from '../interfaces';
 
-export const PersonImages: FC<any> = ({ images, taggedImages }) => {
+interface Props{
+    images: IProfiles[];
+    taggedImages: ITaggedImages[];
+}
+
+export const PersonImages: FC<Props> = ({ images, taggedImages }) => {
 
     const baseUrl = "https://image.tmdb.org/t/p/original/";
 

@@ -70,7 +70,7 @@ export interface IPeople{
     profile_path: string;
     adult: boolean;
     id: number;
-    known_for: any;
+    known_for: object;
     name: string; 
     popularity: number;
 }
@@ -122,7 +122,7 @@ export interface Crew{
     department: string;
     job: string;
     credit_id: string;
-    adult: boolean;
+    adult: boolean | null;
     gender: number | null;
     id: number;
     known_for_department: string; 
@@ -133,7 +133,8 @@ export interface Crew{
 }
 
 export interface GuestStars{
-    character_name: string;
+    character_name?: string;
+    character?: string;
     credit_id: string;
     order: number;
     adult: boolean;
@@ -227,7 +228,7 @@ export interface IProfiles{
 
 export interface ITaggedImages{
     aspect_ratio: string;
-    file_path: number;
+    file_path: string;
     height: number;
     id: string;
     iso_639_1: null | string;
@@ -235,7 +236,7 @@ export interface ITaggedImages{
     vote_count: number;
     width: number;
     image_type: string;
-    media: any;
+    media: object;
     media_type: string;
 }
 
@@ -396,4 +397,30 @@ export interface IShowOverall{
     status: string;
     keywords: IKeywordProps[];
     externalIds?: IShowExternalId;
+}
+
+export interface ISeasonEpisodes{
+    air_date: string;
+    episode_number: number;
+    crew: Crew[];
+    guest_stars: GuestStars[];
+    id: number;
+    name: string;
+    overview: string;
+    production_code: string;
+    season_number: number;
+    still_path: string;
+    vote_average: number;
+    vote_count: number;
+}
+
+export interface ISeasonDetails{
+    _id: string;
+    air_date: string;
+    episodes: ISeasonEpisodes[];
+    name: string;
+    overview: string;
+    id: number;
+    poster_path: string | null;
+    season_number: number;
 }

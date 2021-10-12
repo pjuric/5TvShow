@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 interface Props{ 
   id: number; 
-  tvid: number; 
+  tvid: string | undefined; 
   name: string; 
   still_path: string | null; 
   season_number: number; 

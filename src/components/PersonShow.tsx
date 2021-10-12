@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 interface Props{
     backdrop_path: string | null; 
-    character: string; 
+    character: string | undefined; 
     id: number; 
     name: string; 
 }

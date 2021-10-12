@@ -8,12 +8,16 @@ import { Loading } from "./components/Loading";
 import { SeasonCast } from "./components/SeasonCast";
 import { EpisodeDetails, Credits, IStills, Videos } from "./interfaces";
 
+interface ParamProps{
+  id: string | undefined;
+  snumber: string | undefined;
+  enumber: string | undefined;
+}
+
 const Episode: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const {id} = useParams<any>()
-  const {snumber} = useParams<any>()
-  const {enumber} = useParams<any>()
+  const {id, snumber, enumber} = useParams<ParamProps>()
   const [details, setDetails] = useState<EpisodeDetails>()
   const [credits, setCredits] = useState<Credits>()
   const [videos, setVideos] = useState<Videos[]>([])
@@ -50,7 +54,7 @@ const Episode: FC = () => {
         <div>
           {details && <EpisodeBanner air_date={details.air_date} episode_number={details.episode_number} name={details.name} overview={details.overview} season_number={details.season_number} still_path={details.still_path} vote_average={details.vote_average} vote_count={details.vote_count}/>}
           {credits && credits.cast.length > 0 && <SeasonCast credits={credits.cast}/>}
-          {credits && credits.crew.length > 0 && credits.guest_stars.length > 0 ? <EpisodeCrewAndGuests crew={credits.crew} guests={credits.guest_stars}/> : <div></div>}
+          {credits && credits.crew.length > 0 && credits.guest_stars.length > 0 ? <EpisodeCrewAndGuests crew={credits.crew} guest_stars={credits.guest_stars}/> : <div></div>}
           {videos.length > 0 && <Gallery videos={videos} images={images}/>}
         </div>
       }

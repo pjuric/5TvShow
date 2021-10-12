@@ -1,7 +1,12 @@
 import { FC } from "react";
 import { SeasonCastPerson } from "./SeasonCastPerson";
+import { Cast } from '../interfaces'
 
-export const SeasonCast: FC<any> = ({ credits }) => {
+interface Props{
+  credits: Cast[];
+}
+
+export const SeasonCast: FC<Props> = ({ credits }) => {
   return (
     <div className="seasonCast">
       <h2>Cast</h2>

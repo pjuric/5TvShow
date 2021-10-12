@@ -1,8 +1,14 @@
 import { FC, Key, useEffect, useState } from "react";
 import { ShowGalleryImage } from "./ShowGalleryImage";
 import { ShowGalleryVideo } from "./ShowGalleryVideo";
+import { Videos, IStills } from '../interfaces'
 
-export const Gallery: FC<any> = ({ videos, images }) => {
+interface Props{
+    videos: Videos[];
+    images: IStills[];
+}
+
+export const Gallery: FC<Props> = ({ videos, images }) => {
 
     const numberOfVideos = videos.length;
     const [numberOfImages, setNumberOfImages] = useState<number>(0)
@@ -23,7 +29,7 @@ export const Gallery: FC<any> = ({ videos, images }) => {
                 </div>
             }
             <div className="galleryImages">
-                {images.posters && images.posters.slice(0, numberOfImages).map((featured: {file_path: string;}, index: Key | null | undefined) => (
+                {images && images.slice(0, numberOfImages).map((featured: {file_path: string;}, index: Key | null | undefined) => (
                     <ShowGalleryImage key={index} file_path={featured.file_path}/>
                 ))}
             </div>

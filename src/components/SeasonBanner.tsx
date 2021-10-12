@@ -5,7 +5,7 @@ interface Props {
   name: string; 
   season_number: number; 
   overview: string;
-  still_path: any;
+  still_path: string;
   air_date: string;
 }
 

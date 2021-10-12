@@ -5,7 +5,7 @@ interface Props{
     id: number; 
     name: string; 
     profile_path: string | null; 
-    job: string;
+    job: string | undefined;
 }
 
 export const EpisodeCrewMember: FC<Props> = ({ id, name, profile_path, job }) => {

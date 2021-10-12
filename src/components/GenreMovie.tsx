@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 interface Props {
   id: number; 
-  name: string; 
+  name: string | undefined; 
   poster_path: string | null;
 }
 

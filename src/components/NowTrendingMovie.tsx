@@ -6,7 +6,7 @@ interface Props {
   name: string;
   poster_path: string | null;
   backdrop_path: string | null;
-  setBackground: Dispatch<SetStateAction<any>>;
+  setBackground: Dispatch<SetStateAction<string | null>>;
   overview: string | null;
   vote_average: number; 
   vote_count: number; 

@@ -4,7 +4,7 @@ import { IGenres } from '../interfaces'
 
 interface Props {
   genres: IGenres[];
-  id: number;
+  id: string;
   name: string;
   setPage: Dispatch<SetStateAction<number>>;
 }

@@ -6,16 +6,21 @@ import { Loading } from "./components/Loading";
 import { SeasonBanner } from "./components/SeasonBanner";
 import { SeasonCast } from "./components/SeasonCast";
 import { SeasonEpisodes } from "./components/SeasonEpisodes";
+import { ISeasonDetails, Cast, Videos, IStills } from './interfaces'
+
+interface ParamProps{
+  id: string | undefined;
+  number: string | undefined;
+}
 
 const Season: FC = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-  const {id} = useParams<any>()
-  const {number} = useParams<any>()
-  const [details, setDetails] = useState<any>({})
-  const [credits, setCredits] = useState<any>({})
-  const [videos, setVideos] = useState<any>({})
-  const [images, setImages] = useState<any>({})
+  const {id, number} = useParams<ParamProps>()
+  const [details, setDetails] = useState<ISeasonDetails>()
+  const [credits, setCredits] = useState<Cast[]>([])
+  const [videos, setVideos] = useState<Videos[]>([])
+  const [images, setImages] = useState<IStills[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   const urlDetails = `https://api.themoviedb.org/3/tv/${id}/season/${number}?api_key=${API_KEY}&language=en-US`
@@ -33,7 +38,7 @@ const Season: FC = () => {
       setDetails(gotDetails.data)
       setCredits(gotCredits.data.cast)
       setVideos(gotVideos.data.results)
-      setImages(gotImages.data)
+      setImages(gotImages.data.posters)
       setLoading(false)
       return gotDetails;
     }
@@ -45,12 +50,13 @@ const Season: FC = () => {
       {loading ? 
         <Loading/>
       :
-        <div>
-          <SeasonBanner poster_path={details.poster_path} name={details.name} season_number={details.season_number} overview={details.overview} still_path={details.episodes[0].still_path} air_date={details.air_date}/>
-          <SeasonEpisodes episodes={details.episodes} tvid={id}/>
-          {credits && credits.length > 0 && <SeasonCast credits={credits}/>}
-          {videos.length > 0 && <Gallery videos={videos} images={images}/>}
-        </div>
+        details && 
+          <div>
+            <SeasonBanner poster_path={details.poster_path} name={details.name} season_number={details.season_number} overview={details.overview} still_path={details.episodes[0].still_path} air_date={details.air_date}/>
+            <SeasonEpisodes episodes={details.episodes} tvid={id}/>
+            {credits && credits.length > 0 && <SeasonCast credits={credits}/>}
+            {videos.length > 0 && <Gallery videos={videos} images={images}/>}
+          </div>
       }
     </div>
   );

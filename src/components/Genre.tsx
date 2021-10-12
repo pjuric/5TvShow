@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 interface Props {
   id: number;
   name: string;
-  idActual: number;
+  idActual: string;
   nameActual: string;
   setPage?: Dispatch<SetStateAction<number>>;
 }
